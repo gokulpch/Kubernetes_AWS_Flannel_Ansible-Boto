@@ -200,17 +200,6 @@
         kubeadm_cmd: "{{output_kubeadm.stdout}}"
     - debug: msg="Output {{kubeadm_cmd}}"
 
-- hosts: minions
-  remote_user: root
-  become: true
-  tasks:
-
-    - set_fact:
-        kubeadm: "{{hostvars[groups['master'][0]].kubeadm_cmd}}"
-    - debug: msg="Output {{kubeadm}}"
-    - name: Join to master
-      command: "{{kubeadm}} --skip-preflight-checks"
-
 - hosts: master
   remote_user: root
   become: true
@@ -222,7 +211,6 @@
     - name: Execute the script
       command: bash /home/ubuntu/set_auth_kubeconfig.sh
 
-
 - hosts: master
   remote_user: root
   become: true
@@ -233,3 +221,14 @@
 
     - name:  Installing a pod network
       command: kubectl --kubeconfig /root/admin.conf create -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+
+- hosts: minions
+  remote_user: root
+  become: true
+  tasks:
+
+    - set_fact:
+        kubeadm: "{{hostvars[groups['master'][0]].kubeadm_cmd}}"
+    - debug: msg="Output {{kubeadm}}"
+    - name: Join to master
+      command: "{{kubeadm}} --skip-preflight-checks"
