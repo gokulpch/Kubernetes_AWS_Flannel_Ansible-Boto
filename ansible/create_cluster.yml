@@ -193,7 +193,7 @@
   tasks:
 
     - name: Launch kubeadm in master
-      shell: "kubeadm init --apiserver-advertise-address {{ ansible_eth0.ipv4.address }} --skip-preflight-checks |grep 'kubeadm join'"
+      shell: "kubeadm init --apiserver-advertise-address {{ ansible_eth0.ipv4.address }} --pod-network-cidr=10.244.0.0/16 --skip-preflight-checks |grep 'kubeadm join'"
       register: output_kubeadm
 
     - set_fact:
