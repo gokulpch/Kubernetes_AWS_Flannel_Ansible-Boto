@@ -3,9 +3,6 @@
 # Kubernetes_AWS_Flannel_Ansible-BOTO
 Ansible Framework to Create Kubernetes Cluster with Flannel on AWS
 
-# Contrail_Kubernetes_AWS_Ansible-Boto
-Contrail CNI-Kubernetes with Containarized Control Plane on AWS
-
 ## Provisioning Kubernetes with Flannel using Ansible & Python-Boto on Amazon Web Services
 
 Ansible’s EC2 module uses python-boto library to call AWS API, and boto needs AWS credentials in order to function.
