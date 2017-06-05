@@ -1,7 +1,7 @@
-![alt text](https://github.com/gokulpch/Ansible_Base_Hosts_CloudFormation-Templates/blob/master/img/ansible_aws.png)![alt text](https://www.cncf.io/wp-content/uploads/sites/2/2017/05/logo_kubernetes.png)
-
 # Kubernetes_AWS_Flannel_Ansible-BOTO
 Ansible Framework to Create Kubernetes Cluster with Flannel on AWS
+
+![alt text](https://github.com/gokulpch/Ansible_Base_Hosts_CloudFormation-Templates/blob/master/img/ansible_aws.png)![alt text](https://www.cncf.io/wp-content/uploads/sites/2/2017/05/logo_kubernetes.png)
 
 ## Provisioning Kubernetes with Flannel using Ansible & Python-Boto on Amazon Web Services
 
