@@ -17,6 +17,8 @@
         Name: kube-vpc
       region: us-west-2
       internet_gateway: True
+      tags:
+        - vpc
       subnets:
         - cidr: 172.24.1.0/24
           az: us-west-2b
@@ -34,6 +36,8 @@
       vpc_id: "{{ vpc.vpc_id }}"
       cidr: 172.24.1.0/24
       region: us-west-2
+      tags:
+        - subnet
       resource_tags:
         Name: kube-subnet
     register: subnet
@@ -47,6 +51,8 @@
       description: It allows ports 22, 80,8080 and 443 in and 80 and 443 out
       vpc_id: "{{vpc.vpc_id}}"
       region: us-west-2
+      tags:
+        - securitygroup
       rules:
         - proto: tcp
           from_port: 0
@@ -90,6 +96,8 @@
       vpc_subnet_id: "{{ subnet.subnet.id }}"
       instance_tags:
         Name: "{{ name_tag1 }}"
+      tags:
+        - masterec2
       volumes:
       - device_name: /dev/sda1
         volume_size: 40
@@ -116,6 +124,8 @@
       vpc_subnet_id: "{{ subnet.subnet.id }}"
       instance_tags:
         Name: "{{ name_tag2 }}"
+      tags:
+        - minionec2
       volumes:
       - device_name: /dev/sda1
         volume_size: 40
@@ -206,8 +216,8 @@
 
     - name: Launch kubeadm in master
       shell: "kubeadm init --apiserver-advertise-address {{ ansible_eth0.ipv4.address }} --pod-network-cidr=10.244.0.0/16 --skip-preflight-checks |grep 'kubeadm join'"
-      register: output_kubeadm
       tags: initmaster
+      register: output_kubeadm
 
     - set_fact:
         kubeadm_cmd: "{{output_kubeadm.stdout}}"
