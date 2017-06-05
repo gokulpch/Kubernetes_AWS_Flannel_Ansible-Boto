@@ -143,49 +143,61 @@
 
     - name: Executing Script to Enable Root Access to Instances
       script: ./utils/enable_root_access.sh
+      tags: enableroot
 
     - name: Add k8s packages key
       apt_key: url=https://packages.cloud.google.com/apt/doc/apt-key.gpg state=present
+      tags: k8spackages
 
     - name: Add Kubernetes apt list
       copy: src=./files/kubernetes.list dest=/etc/apt/sources.list.d/kubernetes.list
+      tags: aptlist
 
     - name: Update cache
       apt: update_cache=yes
+      tags: cache
 
     - name: Upgrade
       apt: upgrade=dist
+      tags: upgrade
 
     - name: install docker
       apt: name=docker.io state=present
+      tags: installdocker
 
     - name: install kubelet
       apt: name=kubelet state=present
+      tags: installkubelet
 
     - name: install kubectl
       apt: name=kubectl state=present
+      tags: installkubectl
 
     - name: install kubeadm
       apt: name=kubeadm state=present
+      tags: installkubeadm
 
     - name: install kubernetes-cni
       apt: name=kubernetes-cni state=present
+      tags: installkubecni
 
 - hosts: master
   remote_user: root
   become: true
   tasks:
 
-    - name: Set Username on Master
+    - name: Set Hostname on Master
       script: ./utils/set_hostname_master.sh
+      tags: hnamemaster
 
 - hosts: minions
   remote_user: root
   become: true
   tasks:
 
-    - name: Set Username on Node
+    - name: Set Hostname on Node
       script: ./utils/set_hostname_node.sh
+      tags: hnamenode
 
 - hosts: master
   remote_user: root
@@ -195,6 +207,7 @@
     - name: Launch kubeadm in master
       shell: "kubeadm init --apiserver-advertise-address {{ ansible_eth0.ipv4.address }} --pod-network-cidr=10.244.0.0/16 --skip-preflight-checks |grep 'kubeadm join'"
       register: output_kubeadm
+      tags: initmaster
 
     - set_fact:
         kubeadm_cmd: "{{output_kubeadm.stdout}}"
@@ -207,9 +220,11 @@
 
     - name: Transfer the script
       copy: src=./utils/set_auth_kubeconfig.sh dest=/home/ubuntu mode=0777
+      tags: setadminconf
 
     - name: Execute the script
       command: bash /home/ubuntu/set_auth_kubeconfig.sh
+      tags: setadminconf
 
 - hosts: master
   remote_user: root
@@ -218,9 +233,11 @@
 
     - name:  Installing a pod network cluster role binding
       command: kubectl --kubeconfig /root/admin.conf create -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel-rbac.yml
+      tags: rolebinding
 
     - name:  Installing a pod network
       command: kubectl --kubeconfig /root/admin.conf create -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+      tags: podnet
 
 - hosts: minions
   remote_user: root
@@ -232,3 +249,4 @@
     - debug: msg="Output {{kubeadm}}"
     - name: Join to master
       command: "{{kubeadm}} --skip-preflight-checks"
+      tags: initnode
