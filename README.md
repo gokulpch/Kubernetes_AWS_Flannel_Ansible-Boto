@@ -91,7 +91,7 @@ The solution is organized in 3 parts:
        
     Provide the credentials from the csv file downloaded above and select “us-west-2” as the default region
 
-12. Enter the directory and run:
+12. Enter the “Kubernetes_AWS_Flannel_Ansible-BOTO” directory and run:
 
     ```
      ./ create_key_pair.sh      #Creates a Key_Pair required by ansible initially to login
