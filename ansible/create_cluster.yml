@@ -260,3 +260,16 @@
     - name: Join to master
       command: "{{kubeadm}} --skip-preflight-checks"
       tags: initnode
+      
+- hosts: master
+  remote_user: root
+  become: true
+  tasks:
+  
+    - name: Copy Kubernetes Dashboard YAML
+      copy: src=./utils/create_K8S_dashboard.sh dest=/root/. mode=0777
+      tags: dashboard
+
+    - name: Get Kubernetes Dashboard YAML
+      script: ./utils/create_K8S_dashboard.sh
+      tags: dashboard
