@@ -91,7 +91,7 @@ The solution is organized in 3 parts:
        
     Provide the credentials from the csv file downloaded above and select “us-west-2” as the default region
 
-12. Enter the “Kubernetes_AWS_Flannel_Ansible-BOTO” directory and run:
+12. Enter the **“Kubernetes_AWS_Flannel_Ansible-BOTO”** directory and run:
 
     ```
      ./ create_key_pair.sh      #Creates a Key_Pair required by ansible initially to login
@@ -99,6 +99,15 @@ The solution is organized in 3 parts:
     
     ```
 13. Once the ansible completes the provisioning the user can see a “contrail-K8S-Master” and “contrail-K8S-Node” on the EC2       dashboard with Kubernetes-Master and Node installed with Flannel networking. User can enter the terminal using the             public_ip “root@<public_ip>” "password: contrail1". Refer step.8 for the details on getting the public_ip.
+
+
+14. To Delete all the components on AWS (VPC, IGW, Subnets, EC2 etc.) use delete_cluster in **“Kubernetes_AWS_Flannel_Ansible-BOTO”** directory, run:
+
+      ```
+         ./ delete_cluster.sh      #Deletes the cluster
+    
+      ```
+
 
 ### Ansible - Specific Usage
 
