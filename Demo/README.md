@@ -1,5 +1,7 @@
 # Demo Scripts
 
+Location: /root/Kubernetes_AWS_Flannel_Ansible-Boto/Demo/ on the Master Node
+
 Contains set of useful CLI which provide a guided usage and information.
 
 ##### create_delete_objects.sh
