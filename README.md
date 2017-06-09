@@ -126,10 +126,16 @@ b. Run a playbook without certain tasks
 
 ```ansible-playbook example.yml --skip-tags "notification"```
 
+### _For Sample_YAML files and some Click_Through Scripts_
+
+Clone the following repository to the Desktop if using the Kubernetes Dashboard to upload the YAML file. If users are using CLI these are pre-packaged and available on Master
+
+git clone https://github.com/gokulpch/Kubernetes_Demo_YAML
+
 #### License
 
 This project is licensed under the **MIT** License - see the [LICENSE.md](LICENSE.md) file for details
 
 #### Authors
 
-* **Gokul Chandra** - *Initial work* - (https://github.com/gokulpch)
+* **Gokul Chandra** - (https://github.com/gokulpch)
