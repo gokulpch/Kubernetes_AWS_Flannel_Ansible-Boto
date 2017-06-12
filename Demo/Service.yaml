@@ -2,9 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   namespace: kube-demo
-  labels:
-    run: nginx
-  name: nginx
+  name: nginx-kube
 spec:
   ports:
   - nodePort: 31500
@@ -12,5 +10,5 @@ spec:
     protocol: TCP
     targetPort: 80
   selector:
-    run: nginx
+    app: nginx
   type: NodePort
