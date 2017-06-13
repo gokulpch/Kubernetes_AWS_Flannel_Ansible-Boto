@@ -5,7 +5,6 @@
 ######
 ############################################################################
 printf "Running ansible to create K8S cluster"
-#ansible-playbook /root/Contrail_Kubernetes_AWS_Ansible-Boto/ansible/create_cluster.yaml -v
 for i in `seq 1 5`;do echo;done
 printf "Opening a new screen session......."
 for i in `seq 1 5`;do echo;done
