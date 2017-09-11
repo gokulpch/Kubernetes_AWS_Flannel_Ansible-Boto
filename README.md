@@ -107,7 +107,7 @@ The solution is organized in 3 parts:
 15. To access the Kubernetes Web-UI **"http://<public_ip_contrail-K8S-Minion>:9090"**, no credentials needed. In this scenario as we are not using any 'node_selector' in case Web_UI is inaccesible using Minion, user can login to the Master with the public_ip mentioned on the AWS_EC2 portal and see the details on the terminal:
 
     Find the location of WebUI:
-    ! [alt text](https://github.com/gokulpch/Ansible_Base_Hosts_CloudFormation-Templates/blob/master/img/aws18.png)
+    ![alt text](https://github.com/gokulpch/Ansible_Base_Hosts_CloudFormation-Templates/blob/master/img/aws18.png)
     
     Access WebUI:
     ![alt text](https://github.com/gokulpch/Ansible_Base_Hosts_CloudFormation-Templates/blob/master/img/aws-K8S-UI.png)
