@@ -45,26 +45,6 @@ read -p "Press [Enter] key to Execute Next Command..."
 
 for i in `seq 1 5`;do echo;done
 
-printf "\e[93mkubectl create -f Service.yaml\e[0m"
-
-for i in `seq 1 5`;do echo;done
-
-printf "\e[44mThis creates a Service using the YAML provided\e[0m"
-
-for i in `seq 1 5`;do echo;done
-
-kubectl create -f Service.yaml
-
-for i in `seq 1 5`;do echo;done
-
-kubectl get svc --namespace kube-demo
-
-for i in `seq 1 5`;do echo;done
-
-read -p "Press [Enter] key to Execute Next Command..."
-
-for i in `seq 1 5`;do echo;done
-
 printf "\e[93mkubectl create -f RepController.yaml\e[0m"
 
 for i in `seq 1 5`;do echo;done
@@ -78,6 +58,26 @@ kubectl create -f RepController.yaml
 for i in `seq 1 5`;do echo;done
 
 kubectl get rc --namespace kube-demo
+
+for i in `seq 1 5`;do echo;done
+
+read -p "Press [Enter] key to Execute Next Command..."
+
+for i in `seq 1 5`;do echo;done
+
+printf "\e[93mkubectl create -f Service.yaml\e[0m"
+
+for i in `seq 1 5`;do echo;done
+
+printf "\e[44mThis creates a Service using the YAML provided\e[0m"
+
+for i in `seq 1 5`;do echo;done
+
+kubectl create -f Service.yaml
+
+for i in `seq 1 5`;do echo;done
+
+kubectl get svc --namespace kube-demo
 
 for i in `seq 1 5`;do echo;done
 
