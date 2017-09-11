@@ -104,8 +104,12 @@ The solution is organized in 3 parts:
     ```
 14. Once the ansible completes the provisioning the user can see a “contrail-K8S-Master” and “contrail-K8S-Node” on the EC2       dashboard with Kubernetes-Master and Node installed with Flannel networking. User can enter the terminal using the             public_ip “root@<public_ip>” "password: contrail1". Refer step.8 for the details on getting the public_ip.
 
-15. To access the Kubernetes Web-UI **"http://<public_ip_contrail-K8S-Master>:9090"**, no credentials needed
+15. To access the Kubernetes Web-UI **"http://<public_ip_contrail-K8S-Minion>:9090"**, no credentials needed. In this scenario as we are not using any 'node_selector' in case Web_UI is inaccesible using Minion, user can login to the Master with the public_ip mentioned on the AWS_EC2 portal and see the details on the terminal:
+
+    Find the location of WebUI:
+    ! [alt text](https://github.com/gokulpch/Ansible_Base_Hosts_CloudFormation-Templates/blob/master/img/aws18.png)
     
+    Access WebUI:
     ![alt text](https://github.com/gokulpch/Ansible_Base_Hosts_CloudFormation-Templates/blob/master/img/aws-K8S-UI.png)
 
 16. To Delete all the components on AWS (VPC, IGW, Subnets, EC2 etc.) use delete_cluster in **“Kubernetes_AWS_Flannel_Ansible-BOTO”** directory, run:
