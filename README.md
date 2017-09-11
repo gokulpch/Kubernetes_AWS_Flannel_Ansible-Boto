@@ -132,7 +132,7 @@ b. Run a playbook without certain tasks
 
 ### _For Sample_YAML files and some Click_Through Scripts_
 
-Clone the following repository to the Desktop if using the Kubernetes Dashboard to upload the YAML file. If users are using CLI these are pre-packaged and available on Master
+Clone the following repository to the Desktop if using the Kubernetes Dashboard to upload the YAML file. If users are using CLI these are pre-packaged and available on Master (/root/Kubernetes_Demo_YAML).
 
 git clone https://github.com/gokulpch/Kubernetes_Demo_YAML
 
